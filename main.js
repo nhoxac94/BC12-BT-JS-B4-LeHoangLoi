@@ -24,8 +24,8 @@ btnSapXep.onclick = function(){
     console.log(isNaN(soThuBa));
 
     
-    if ((isNaN(soThuNhat)) || isNaN(soThuNhat) || isNaN(soThuNhat)) {
-        alert('Vui lòng nhập 3 số nguyên')
+    if ((isNaN(soThuNhat)) || isNaN(soThuHai) || isNaN(soThuBa)) {
+        ketQuaSapXep.innerHTML = 'Vui lòng nhập 3 số nguyên'
         
     } else {
         if(soThuNhat >= soThuHai) {
@@ -105,14 +105,17 @@ btnTimChanLe.onclick = function() {
     var soThuBaBai3 = document.getElementById('soThuBaBai3').value;
     
 
-    console.log(Number.isInteger(+soThuNhatBai3));
-    (isNaN(soThuNhatBai3) || isNaN(soThuHaiBai3) || isNaN(soThuBaBai3)) || Number.isInteger(+soThuNhatBai3) == false || Number.isInteger(+soThuHaiBai3) == false|| Number.isInteger(+soThuBaBai3) == false ? alert('Vui lòng nhập 3 số nguyên') : 0;
     
-    soThuNhatBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
-    soThuHaiBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
-    soThuBaBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
-    ketQuaChanLe.innerHTML = 'Có: '+tongSoChan +' số chẵn và ' + tongSoLe + ' số lẻ';
-    
+    if ((isNaN(soThuNhatBai3) || isNaN(soThuHaiBai3) || isNaN(soThuBaBai3)) || Number.isInteger(+soThuNhatBai3) == false || Number.isInteger(+soThuHaiBai3) == false|| Number.isInteger(+soThuBaBai3) == false) {
+        ketQuaChanLe.innerHTML= 'Vui lòng nhập 3 số nguyên';
+    } else {
+
+        soThuNhatBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
+        soThuHaiBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
+        soThuBaBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
+        ketQuaChanLe.innerHTML = 'Có: '+tongSoChan +' số chẵn và ' + tongSoLe + ' số lẻ';
+    }
+      
 
 }
 
