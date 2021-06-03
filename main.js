@@ -13,39 +13,50 @@ var btnSapXep = document.getElementById('btnSapXep');
 var ketQuaSapXep = document.getElementById('ketQuaSapXep');
 
 btnSapXep.onclick = function(){
-    var soTamThoi ;
+    var soTamThoi = 0 ;
     var soThuNhat = Number(document.getElementById('soThuNhat').value);
     var soThuHai = Number(document.getElementById('soThuHai').value);
     var soThuBa = Number(document.getElementById('soThuBa').value);
-    if(soThuNhat >= soThuHai) {
-        soTamThoi = soThuNhat;
-        soThuNhat = soThuHai;
-        soThuHai = soTamThoi;
-    } 
-    if (soThuNhat >= soThuBa) {
-        soTamThoi = soThuNhat;
-        soThuNhat = soThuBa;
-        soThuBa = soTamThoi;
-    }
-    if (soThuHai >= soThuBa) {
-        soTamThoi = soThuHai;
-        soThuHai = soThuBa;
-        soThuBa = soTamThoi;
-    }
-    ketQuaSapXep.innerHTML = 'Thứ tự các số tăng dần là ' + soThuNhat + ' ' + soThuHai+ ' ' + soThuBa;
     
+
+    console.log(typeof soThuNhat);
+    console.log(soThuHai);
+    console.log(isNaN(soThuBa));
+
+    
+    if ((isNaN(soThuNhat)) || isNaN(soThuNhat) || isNaN(soThuNhat)) {
+        alert('Vui lòng nhập 3 số nguyên')
+        
+    } else {
+        if(soThuNhat >= soThuHai) {
+            soTamThoi = soThuNhat;
+            soThuNhat = soThuHai;
+            soThuHai = soTamThoi;
+        } 
+        if (soThuNhat >= soThuBa) {
+            soTamThoi = soThuNhat;
+            soThuNhat = soThuBa;
+            soThuBa = soTamThoi;
+        }
+        if (soThuHai >= soThuBa) {
+            soTamThoi = soThuHai;
+            soThuHai = soThuBa;
+            soThuBa = soTamThoi;
+        }
+        ketQuaSapXep.innerHTML = 'Thứ tự các số tăng dần là ' + soThuNhat + ' ' + soThuHai+ ' ' + soThuBa;
+        
+
+         }
+
 }
 
 /**
  * Bài 2: Viết chương trình “Chào hỏi” các thành viên trong gia đình với các đặc điểm. Đầu tiên máy sẽ hỏi ai sử dụng máy. Sau đó dựa vào câu trả lời và đưa ra lời chào phù hợp. Giả sử trong gia đình có 4 thành viên: Bố (B), Mẹ (M), anh Trai (A) và Em gái (E)
- *  B1: Input : nguoiSuDung
+ *  B1: Input : Người sử dụng lựa chọn các option đã xuất hiện
  *  B2: Handle
- *  - Đặt biến: nguoiSuDung; loiChao
- *  - Dùng hàm switch case duyệt qua các điều kiện
- *      + B : Bố
- *      + M : Mẹ
- *      + A : anh Trai
- *      + E : Em gái
+ *  - Đặt biến: boSuDung, meSuDung, anhSuDung,emSuDung  ; loiChao
+ *  - Dùng hàm if duyệt qua các điều kiện biến nào được checked thì in ra màn hình kết quả lơi chào tương ứng
+ *      
  * B3: Output: Xuất lời chào ra màn hình tương ứng
  */
 
@@ -54,22 +65,22 @@ var xuatLoiChao = document.getElementById('xuatLoiChao');
 var loiChao = '';
 
 btnXinChao.onclick = function() {
-    var nguoiSuDung = document.getElementById('nguoiSuDung').value;
-    switch (nguoiSuDung) {
-        case 'B':
-        loiChao = 'Xin chào Bố'; 
-        break;
-        case 'M': 
+    var boSuDung = document.getElementById('boSuDung');
+    var meSuDung = document.getElementById('meSuDung');
+    var anhSuDung = document.getElementById('anhSuDung');
+    var emSuDung = document.getElementById('emSuDung');
+
+    
+    if (boSuDung.checked == true) {
+        loiChao = 'Xin chào Bố';
+    } else if(meSuDung.checked == true) {
         loiChao = 'Xin chào Mẹ'; 
-        break;
-        case 'A': 
-        loiChao = 'Xin chào anh Trai'; 
-        break; 
-        case 'E': 
-        loiChao = 'Xin chào em gái'; 
-        break;        
-    }
-    console.log(loiChao);
+    }else if(anhSuDung.checked == true) {
+        loiChao = 'Xin chào Anh Trai'; 
+    }else if(emSuDung.checked == true) {
+        loiChao = 'Xin chào Em Gái'; 
+    };
+         
     xuatLoiChao.innerHTML = loiChao;
 }   
 
@@ -92,6 +103,11 @@ btnTimChanLe.onclick = function() {
     var soThuNhatBai3 = document.getElementById('soThuNhatBai3').value;
     var soThuHaiBai3 = document.getElementById('soThuHaiBai3').value;
     var soThuBaBai3 = document.getElementById('soThuBaBai3').value;
+    
+
+    console.log(Number.isInteger(+soThuNhatBai3));
+    (isNaN(soThuNhatBai3) || isNaN(soThuHaiBai3) || isNaN(soThuBaBai3)) || Number.isInteger(+soThuNhatBai3) == false || Number.isInteger(+soThuHaiBai3) == false|| Number.isInteger(+soThuBaBai3) == false ? alert('Vui lòng nhập 3 số nguyên') : 0;
+    
     soThuNhatBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
     soThuHaiBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
     soThuBaBai3 % 2 == 0 ? tongSoChan++ : tongSoLe++;
@@ -119,7 +135,9 @@ btnLoaiTamGiac.onclick = function() {
     var canhThuNhat = Number(document.getElementById('canhThuNhat').value);
     var canhThuHai = Number(document.getElementById('canhThuHai').value);
     var canhThuBa = Number(document.getElementById('canhThuBa').value);
-    if (canhThuNhat + canhThuHai < canhThuBa || canhThuHai + canhThuBa < canhThuNhat || canhThuBa + canhThuNhat < canhThuHai) {
+    
+      
+    if (canhThuNhat + canhThuHai < canhThuBa || canhThuHai + canhThuBa < canhThuNhat || canhThuBa + canhThuNhat < canhThuHai || isNaN(canhThuNhat) || isNaN(canhThuHai) || isNaN(canhThuBa) ||canhThuNhat <= 0 || canhThuHai <= 0 || canhThuBa<= 0 ){
         loaiTamGiac = 'Ba cạnh trên không phải là cạnh tam giác'
     } else {
         if (canhThuNhat == canhThuHai && canhThuHai == canhThuBa) {
